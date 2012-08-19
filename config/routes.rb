@@ -9,7 +9,7 @@ Phonetic3::Application.routes.draw do
   resources :user_settings, :only => [:new, :edit, :create, :update]
   match '/register' => 'user_settings#new', :as => :register
   match 'my-info' => 'user_settings#edit', :as => :my_info
-  match '/' => 'samples#new'
+  root :to => 'samples#new'
   match '/:controller(/:action(/:id))'
 end
 
