@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'patron', '0.4.9'
+gem 'rails', '3.2.8'
 gem 'andand'
 gem 'rdoc'
 gem 'will_paginate'
@@ -17,8 +18,6 @@ end
 group :production do
   gem 'mysql2', '< 0.3'
 end
-
-gem 'rails', '3.2.8'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
