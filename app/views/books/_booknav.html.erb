@@ -1,0 +1,6 @@
+<table width=100%>
+  <tr>
+    <td><%= link_to "<< Back", book_path(@book, :original => @show_original, :translation => @show_translation, :offset => @back_offset) %></td>
+    <td><%= link_to "Forward >>", book_path(@book, :original => @show_original, :translation => @show_translation, :offset => @forward_offset) %></td>
+  </tr>
+</table>

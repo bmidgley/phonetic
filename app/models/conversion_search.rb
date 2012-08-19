@@ -1,20 +1,38 @@
-class ConversionSearch< ActiveRecord::Base
+class ConversionSearch 
+  include ActiveModel::Validations
+  include ActiveModel::Conversion
+  extend ActiveModel::Naming
+
   SEARCH_ENGLISH = 0
   SEARCH_PHONETIC = 1
 
-  has_no_table
+  attr_accessor :query, :search_type, :page, :user_id
 
-  column :query, :string
-  column :search_type, :integer
-  column :page, :integer
-  # column :user_id, :integer
-  belongs_to :user
   validates_presence_of :search_type
   
   attr_accessor :conversions
   
-  before_validation :prepare_find
+  #before_validation :prepare_find
   
+  def initialize(attributes = {})
+    attributes.each do |name, value|
+      send("#{name}=", value)
+    end
+  end
+
+  def persisted?
+    false
+  end
+
+  def user
+    @user ||= User.find @user_id
+  end
+
+  def user=(user)
+    @user = user
+    @user_id = user.id
+  end
+
   def find
     
     return false unless self.valid?

@@ -1,0 +1,31 @@
+<% title "Sample" %>
+
+Original text:<br>
+<%= h @sample.english %>
+<p>
+Translated text:<br>
+<%= h @translation %>
+
+<p>Double-line translation:<br>
+
+<table border=0><tr>
+<%
+thisline = @line_length
+@split_sample.each_with_index do |s, i|
+%>
+<td><%= s %><br><%= @split_translation[i] %></td>
+<% 
+
+thisline -= (s.length + 1)
+if thisline < 0
+  thisline = @line_length
+%>
+</table><table border=0><tr>
+<% 
+end
+
+end 
+%>
+</tr></table>
+
+<p><%= link_to "Back to List", samples_path %></p>

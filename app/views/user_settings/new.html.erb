@@ -1,0 +1,6 @@
+<% title "Register now" %>
+
+<%= form_for @user, :url => {:action => :create}, :html => {:method => :post} do |f| %>
+<%= render f %>
+<% end %>
+

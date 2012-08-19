@@ -1,0 +1,21 @@
+<% title "Samples" %>
+
+<table>
+  <tr>
+    <th>English</th>
+  </tr>
+  <% for sample in @samples %>
+    <tr>
+		<% if is_editor %>
+      <td><%= link_to "Edit", edit_sample_path(sample) %></td>
+      <td><%= link_to "Delete", sample, :confirm => 'Are you sure?', :method => :delete %></td>
+			<% end %>
+      <td><%= link_to "Translate", sample_path(sample) %></td>
+    </tr>
+    <tr>
+      <td colspan="4"><%=h sample.english %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Sample", new_sample_path %></p>

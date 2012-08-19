@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :username
 
-  named_scope :editors, {:conditions => {:is_editor => true}}
+  scope :editors, {:conditions => {:is_editor => true}}
 
   # create user
   # if the operator is a admin the can set is_admin and is_editor 

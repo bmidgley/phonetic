@@ -1,0 +1,21 @@
+<%= render :partial => 'booknav' %>
+
+<% title @book.name %>
+
+<% @split_content[0..-2].each_with_index do |s, i| %>
+  <table border=0>
+    <tr>
+      <% t = @split_translation[i].split(' ') %>
+      <% s.split(' ').each_with_index do |sw, j| %>
+        <td>
+          <%= sw if @show_original %>
+          <%= "<br>" if @show_original && @show_translation %>
+          <%= t[j] if @show_translation %>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+<% end %>
+
+<%= render :partial => 'booknav' %>
+

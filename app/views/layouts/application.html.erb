@@ -1,14 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Phonetic3</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= h(yield(:title) || "Untitled") %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= yield(:head) %>
+    <%= javascript_include_tag "jquery-1.7.min", "rails" %>
+  </head>
+  <body onload="x = document.getElementById('conversion_english');if (x && x.value == '') x.focus();">
+    <div id="container">
+      <div id="user_nav">
+        <% if current_user %>
+          <%= link_to "Edit profile", my_info_path %> |
+          <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to "Register", register_path %> |
+          <%= link_to "Sign in", login_path %>
+        <% end %>
+      </div>
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%- end -%>
+      
+      <%= link_to "Dictionary", conversions_path %>
+      <%= link_to "Samples", samples_path %>
+      <%= link_to "Books", books_path %>
+			<%= link_to("Users", users_path) if current_user && current_user.is_admin?%>
+      Dictionary:
 
-<%= yield %>
+      <% if current_user %>
+        <%= select_tag "dictionary", options_for_select(User.editors.map{|u| [u.email,u.id]}, current_user.dictionary_user_id), :include_blank => true, :onchange => "window.location.href = '/?dictionary=' + $('#dictionary').val();" %>
+      <% end %>
 
-</body>
+      <%- if show_title? -%>
+        <h1><%=h yield(:title) %></h1>
+      <%- end -%>
+      
+      <%= yield %>
+    </div>
+  </body>
 </html>

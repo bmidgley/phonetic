@@ -1,0 +1,28 @@
+
+<% title "Books" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Original</th>
+    <th>Translated</th>
+    <th>Dual-line</th>
+    <th colspan=2>Actions</th>
+  </tr>
+  <% for book in @books %>
+    <tr>
+      <td><%= book.name %></td>
+      <td><%= book.author %></td>
+      <td><%= link_to "Original", book_path(book, :original => true) %></td>
+      <td><%= link_to "Translated", book_path(book, :translation => true) %></td>
+      <td><%= link_to "Dual-line", book_path(book, :original => true, :translation => true) %></td>
+		  <% if is_editor && false %>
+        <td><%= link_to "Edit", edit_book_path(book) %></td>
+        <td><%= link_to "Delete", book, :confirm => 'Are you sure?', :method => :delete %></td>
+			<% end %>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Book", new_book_path if is_editor %></p>

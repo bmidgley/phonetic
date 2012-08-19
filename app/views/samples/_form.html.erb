@@ -1,0 +1,7 @@
+<%= form_for @sample do |f| %>
+  <p>
+    <%= f.label :english %><br />
+    <%= f.text_area :english, :cols => 100, :rows => 40 %>
+  </p>
+  <p><%= f.submit "Save sample" %></p>
+<% end %>

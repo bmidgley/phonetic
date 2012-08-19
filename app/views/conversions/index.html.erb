@@ -1,0 +1,38 @@
+<% title "Dictionary" %>
+<%= form_for @conversion_search, :url => conversions_path, :html => {:method => :get} do |f|%>
+<p>Search: <%=f.text_field :query%></p>
+<p>Search Type: <%=f.select :search_type, search_types%></p>
+<p><%=f.submit "Search", :name => nil%></p>
+
+<p>Found <strong><%=@conversion_search.conversions.total_entries%></strong> result(s)</p>
+<p><%=will_paginate @conversion_search.conversions%></p>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>English</th>
+    <th>Phonetic</th>
+  </tr>
+  <% for conversion in @conversion_search.conversions %>
+    <tr>
+      <td><%= conversion.user.username %></td>
+      <td><%=h conversion.english %></td>
+                        <% if is_admin || conversion.user == current_user %>
+      <td><%= text_field_tag conversion.id, conversion.phonetic %></td>
+      <td><%= link_to "Edit", edit_conversion_path(conversion) %></td>
+      <td><%= link_to "Delete", conversion, :confirm => 'Are you sure?', :method => :delete %></td>
+                        <% else %>
+      <td><%=h conversion.phonetic %></td>
+			<% end %>
+    </tr>
+  <% end %>
+</table>
+
+<% if is_editor %>
+<%= f.submit "Save changes", :name => 'save' %>
+<% end %>
+
+<% end %>
+<p><%=will_paginate @conversion_search.conversions%></p>
+
+<p><%= link_to "New entry", new_conversion_path %></p>

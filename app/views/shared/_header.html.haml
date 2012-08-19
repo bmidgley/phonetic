@@ -1,0 +1,9 @@
+#header
+  #header_content
+    #logo
+    
+    #user_nav
+      %ul
+        %li.user
+          == Hello, #{current_user.name}
+        %li.logout= link_to 'Logout', user_session_path, :method => :delete

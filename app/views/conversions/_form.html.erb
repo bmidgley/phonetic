@@ -1,0 +1,12 @@
+<%= form_for @conversion do |f| %>
+  <p>
+    <%= f.label :english %><br />
+    <%= f.text_field :english %>
+  </p>
+  <p>
+    <%= f.label :phonetic %><br />
+    <%= f.text_field :phonetic %>
+  </p>
+  Owned by <%= @conversion.user.username rescue "no one" %>
+  <p><%= f.submit %></p>
+<% end %>
