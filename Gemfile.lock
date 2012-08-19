@@ -28,13 +28,15 @@ GEM
     activesupport (3.2.8)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    addressable (2.3.2)
     andand (1.3.3)
     arel (3.0.2)
     authlogic (3.1.3)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     builder (3.0.0)
+    cloudfoundry-jquery-rails (1.0.19.1)
+      railties (~> 3.0)
+      thor (~> 0.14)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -43,6 +45,7 @@ GEM
       execjs
     coffee-script-source (1.3.3)
     columnize (0.3.6)
+    daemons (1.1.9)
     debugger (1.2.0)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
@@ -51,18 +54,10 @@ GEM
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.1.3)
     erubis (2.7.0)
-    excon (0.16.1)
+    eventmachine (0.12.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
     haml (3.1.7)
-    heroku (2.30.3)
-      heroku-api (~> 0.3.4)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.7)
-      rest-client (~> 1.6.1)
-      rubyzip
-    heroku-api (0.3.4)
-      excon (~> 0.16.1)
     hike (1.2.1)
     i18n (0.6.0)
     interact (0.2)
@@ -73,8 +68,6 @@ GEM
     json (1.7.5)
     json_pure (1.5.4)
       spruz (~> 0.2.8)
-    launchy (2.1.2)
-      addressable (~> 2.3)
     libv8 (3.3.10.4)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -83,7 +76,6 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     mysql2 (0.2.18)
-    netrc (0.7.7)
     patron (0.4.9)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -113,7 +105,6 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rubyzip (0.9.9)
     rubyzip2 (2.0.2)
     sass (3.2.1)
     sass-rails (3.2.5)
@@ -137,6 +128,10 @@ GEM
     terminal-table (1.4.5)
     therubyracer (0.10.2)
       libv8 (~> 3.3.10)
+    thin (1.4.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.16.0)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -160,19 +155,22 @@ PLATFORMS
 DEPENDENCIES
   andand
   authlogic
+  bundler
+  cloudfoundry-jquery-rails
   coffee-rails (~> 3.2.1)
   debugger
   haml
-  heroku
   jquery-rails
   mysql2 (< 0.3)
   patron (= 0.4.9)
   rails (= 3.2.8)
+  rake
   rdoc
   sass-rails (~> 3.2.3)
   sqlite3
   taps
   therubyracer
+  thin
   uglifier (>= 1.0.3)
   vmc
   will_paginate

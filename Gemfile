@@ -7,6 +7,10 @@ gem 'rdoc'
 gem 'will_paginate'
 gem 'authlogic'
 gem 'haml'
+gem 'thin'
+gem 'bundler'
+gem 'rake'
+gem 'cloudfoundry-jquery-rails'
 
 group :development do
   gem 'debugger'
