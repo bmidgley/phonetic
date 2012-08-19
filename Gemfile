@@ -9,7 +9,6 @@ gem 'haml'
 
 group :development do
   gem 'debugger'
-  gem 'heroku'
   gem 'sqlite3'
   gem 'taps'
   gem 'vmc'
