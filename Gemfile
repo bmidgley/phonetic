@@ -11,12 +11,13 @@ gem 'thin'
 gem 'bundler'
 gem 'rake'
 gem 'cloudfoundry-jquery-rails'
+gem 'jquery-rails'
 
 group :development do
-  gem 'debugger'
+#  gem 'debugger'
   gem 'sqlite3'
-  gem 'taps'
-  gem 'vmc'
+#  gem 'taps'
+#  gem 'vmc'
 end
 
 group :production do
@@ -24,11 +25,9 @@ group :production do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'therubyracer'
+#  gem 'sass-rails',   '~> 3.2.3'
+#  gem 'coffee-rails', '~> 3.2.1'
+#  gem 'uglifier', '>= 1.0.3'
+#  gem 'therubyracer'
 end
-
-gem 'jquery-rails'
 
