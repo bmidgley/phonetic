@@ -12,16 +12,16 @@ gem 'bundler'
 gem 'rake'
 gem 'cloudfoundry-jquery-rails'
 gem 'jquery-rails'
+gem 'pg'
 
 group :development do
 #  gem 'debugger'
-  gem 'sqlite3'
+#  gem 'sqlite3'
 #  gem 'taps'
-#  gem 'vmc'
+  gem 'vmc'
 end
 
 group :production do
-  gem 'mysql2', '< 0.3'
 end
 
 group :assets do
