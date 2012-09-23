@@ -11,3 +11,4 @@ allwords
 config.ru
 .rvmrc
 \#*
+manifest.yml
