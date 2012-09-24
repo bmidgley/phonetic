@@ -10,7 +10,6 @@ gem 'haml'
 gem 'thin'
 gem 'bundler'
 gem 'rake'
-gem 'cloudfoundry-jquery-rails'
 gem 'jquery-rails'
 gem 'pg'
 

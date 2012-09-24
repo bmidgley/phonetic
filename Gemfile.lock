@@ -35,9 +35,6 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     builder (3.0.0)
-    cloudfoundry-jquery-rails (1.0.19.1)
-      railties (~> 3.0)
-      thor (~> 0.14)
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (0.12.10)
@@ -123,7 +120,6 @@ DEPENDENCIES
   andand
   authlogic
   bundler
-  cloudfoundry-jquery-rails
   haml
   jquery-rails
   patron (= 0.4.9)
