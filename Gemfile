@@ -19,6 +19,7 @@ group :development do
 #  gem 'taps'
   gem 'caldecott'
   gem 'vmc'
+  gem 'seed_dump'
 end
 
 group :production do

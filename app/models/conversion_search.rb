@@ -15,6 +15,7 @@ class ConversionSearch
   #before_validation :prepare_find
   
   def initialize(attributes = {})
+    prepare_find
     attributes.each do |name, value|
       send("#{name}=", value)
     end
