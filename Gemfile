@@ -17,6 +17,7 @@ group :development do
 #  gem 'debugger'
   gem 'sqlite3'
 #  gem 'taps'
+  gem 'caldecott'
   gem 'vmc'
 end
 
