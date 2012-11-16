@@ -39,7 +39,7 @@ class ConversionSearch
     return false unless self.valid?
     
     conditions = nil
-    if search_type == SEARCH_ENGLISH
+    if search_type.to_i == SEARCH_ENGLISH
       conditions = self.format_query
     else
       conditions = self.format_query("phonetic")
