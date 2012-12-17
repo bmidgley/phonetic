@@ -1,5 +1,5 @@
 <% title "Edit your information" %>
 
-<%= form_for @user, user_setting_path(:current), :method => :put do |f| %>
+<%= form_for @user, :url => user_setting_path(:current), :method => :put do |f| %>
 <%= render f %>
 <% end %>
