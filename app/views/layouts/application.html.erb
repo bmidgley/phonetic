@@ -26,10 +26,10 @@
       <%= link_to "Samples", samples_path %>
       <%= link_to "Books", books_path %>
 			<%= link_to("Users", users_path) if current_user && current_user.is_admin?%>
-      Dictionary:
 
       <% if current_user %>
-        <%= select_tag "dictionary", options_for_select(User.editors.map{|u| [u.email,u.id]}, current_user.dictionary_user_id), :include_blank => true, :onchange => "window.location.href = '/?dictionary=' + $('#dictionary').val();" %>
+        Dictionary:
+        <%= select_tag "dictionary", options_for_select(User.editors.map{|u| [u.email,u.id]}, current_user.dictionary_user_id), :include_blank => true, :onchange => "window.location.href = '/conversions/?dictionary=' + $('#dictionary').val();" %>
       <% end %>
 
       <%- if show_title? -%>
