@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_authentic
-  attr_accessible :email, :password, :password_confirmation, :dictionary_user_id
+  attr_accessible :username, :email, :password, :password_confirmation, :dictionary_user_id
   has_many :conversions
   has_many :bookmarks
   belongs_to :dictionary_user, :class_name => 'User'
@@ -40,12 +40,14 @@ class User < ActiveRecord::Base
   # else only edit common attributes
   def full_save(attrs,admin_user = false)
     attrs ||= {}
-    
+
+    is_admin_p = attrs.delete(:is_admin)
+    is_editor_p = attrs.delete(:is_editor)
+
     self.attributes = attrs
     if admin_user
-      
-      self.is_admin = attrs[:is_admin]
-      self.is_editor = attrs[:is_editor]
+      self.is_admin = is_admin_p
+      self.is_editor = is_editor_p
     end
     
     self.save
