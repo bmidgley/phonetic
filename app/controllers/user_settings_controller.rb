@@ -19,6 +19,7 @@ class UserSettingsController < ApplicationController
       flash[:notice] = "Register successful."
       redirect_to my_info_url
     else
+      flash[:notice] = "Error saving account. Password must be 4+ characters and account must be unique."
       render :action => 'new'
     end
   end
