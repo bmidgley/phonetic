@@ -5,7 +5,7 @@
     <title><%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'application' %>
     <%= yield(:head) %>
-    <%= javascript_include_tag "jquery-1.7.min", "rails" %>
+    <%= javascript_include_tag "jquery-1.7.min", "jquery_ujs", "rails" %>
   </head>
   <body onload="x = document.getElementById('conversion_english');if (x && x.value == '') x.focus();">
     <div id="container">
