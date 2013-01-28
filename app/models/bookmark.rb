@@ -1,4 +1,6 @@
 class Bookmark < ActiveRecord::Base
+  attr_accessible :book, :start
+
   belongs_to :user
   belongs_to :book
 
