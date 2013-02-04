@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation, :dictionary_user_id
   has_many :conversions
   has_many :bookmarks
+  has_many :books
   belongs_to :dictionary_user, :class_name => 'User'
   
   validates_uniqueness_of :username
