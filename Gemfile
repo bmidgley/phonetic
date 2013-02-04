@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'patron', '0.4.9'
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'andand'
 gem 'rdoc'
 gem 'will_paginate'
