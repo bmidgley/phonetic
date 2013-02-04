@@ -48,9 +48,11 @@ class ConversionsController < ApplicationController
     if is_editor && params[:save]
       params.each do |k,v|
         if k.to_i.to_s == k
-          conversion = Conversion.find(k.to_i)
-          next unless (current_user.is_admin || conversion.user == current_user)
+          conversion = Conversion.find_by_id(k.to_i)
+          next unless (conversion && current_user.is_admin || conversion.user == current_user)
           conversion.phonetic = v
+          phase_radio = params["#{conversion.id}-phase".to_sym]
+          conversion.level = phase_radio[:level] if phase_radio
           conversion.save!
         end
       end

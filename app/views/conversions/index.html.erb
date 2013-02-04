@@ -12,24 +12,32 @@
     <th>Owner</th>
     <th>English</th>
     <th>Phonetic</th>
+    <th></th>
+    <th></th>
+    <% (1..8).each do |i| %>
+      <th><%= i %></th>
+    <% end %>
   </tr>
   <% for conversion in @conversion_search.conversions %>
     <tr>
       <td><%= conversion.user.username %></td>
       <td><%=h conversion.english %></td>
-                        <% if is_admin || conversion.user == current_user %>
-      <td><%= text_field_tag conversion.id, conversion.phonetic %></td>
-      <td><%= link_to "Edit", edit_conversion_path(conversion) %></td>
-      <td><%= link_to "Delete", conversion, :confirm => 'Are you sure?', :method => :delete %></td>
-                        <% else %>
-      <td><%=h conversion.phonetic %></td>
-			<% end %>
+      <% if is_admin || conversion.user == current_user %>
+        <td><%= text_field_tag conversion.id, conversion.phonetic %></td>
+        <td><%= link_to "Edit", edit_conversion_path(conversion) %></td>
+        <td><%= link_to "Delete", conversion, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% (1..8).each do |i| %>
+          <td><%= radio_button "#{conversion.id}-phase", 'level', i, :checked => conversion.level == i %></td>
+        <% end %>
+      <% else %>
+        <td><%=h conversion.phonetic %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
 <% if is_editor %>
-<%= f.submit "Save changes", :name => 'save' %>
+<%= f.submit "Save all changes above", :name => 'save' %>
 <% end %>
 
 <% end %>
