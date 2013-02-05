@@ -6,7 +6,7 @@ class ConversionSearch
   SEARCH_ENGLISH = 0
   SEARCH_PHONETIC = 1
 
-  attr_accessor :query, :search_type, :page, :user_id
+  attr_accessor :query, :search_type, :page, :user_id, :level
 
   validates_presence_of :search_type
   
@@ -54,6 +54,16 @@ class ConversionSearch
 
     # so we can always append conditions with 'and'
     query_list = ["1=1"]
+
+    # levels
+    unless level.blank?
+      if level == '0'
+        query_list[0] = "#{query_list[0]} and level is NULL"
+      else
+        query_list[0] = "#{query_list[0]} and level = ?"
+        query_list << level
+      end
+    end
 
     # filter by user
     if user

@@ -1,7 +1,8 @@
 <% title "Dictionary" %>
-<%= form_for @conversion_search, :url => conversions_path, :html => {:method => :get} do |f|%>
-<p>Search: <%=f.text_field :query%></p>
-<p>Search Type: <%=f.select :search_type, search_types%></p>
+<%= form_for @conversion_search, :url => conversions_path, :html => {:method => :get} do |f| %>
+<p>Search: <%=f.text_field :query %></p>
+<p>Search Type: <%=f.select :search_type, search_types %></p>
+<p>Search in phase: <%= f.select :level,  levels %></p>
 <p><%=f.submit "Search", :name => nil%></p>
 
 <p>Found <strong><%=@conversion_search.conversions.total_entries%></strong> result(s)</p>
