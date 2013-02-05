@@ -14,6 +14,7 @@
     <th>Phonetic</th>
     <th></th>
     <th></th>
+    <th>-</th>
     <% (1..8).each do |i| %>
       <th><%= i %></th>
     <% end %>
@@ -26,14 +27,18 @@
         <td><%= text_field_tag conversion.id, conversion.phonetic %></td>
         <td><%= link_to "Edit", edit_conversion_path(conversion) %></td>
         <td><%= link_to "Delete", conversion, :confirm => 'Are you sure?', :method => :delete %></td>
-        <% (1..8).each do |i| %>
-          <td><%= radio_button "#{conversion.id}-phase", 'level', i, :checked => conversion.level == i %></td>
+        <% (0..8).each do |i| %>
+          <td align=center><%= radio_button "#{conversion.id}-phase", 'level', i > 0 ? i : nil, :class => "r#{i}", :checked => conversion.level == i || (conversion.level == nil && i == 0)%></td>
         <% end %>
       <% else %>
         <td><%=h conversion.phonetic %></td>
       <% end %>
     </tr>
   <% end %>
+  <td colspan="5"></td>
+  <% (0..8).each do |i| %>
+    <td><%= button_to_function "All", "$('.r#{i}').prop('checked',true)" %></td>
+  <% end  %>
 </table>
 
 <% if is_editor %>
