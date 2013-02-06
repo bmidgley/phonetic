@@ -63,7 +63,7 @@ class SamplesController < ApplicationController
     elsif sample.session_id == session[:session_id]
       @sample = sample
     end
-    @translation = Conversion.convert(@sample.english, (current_user.id rescue nil))
+    @translation = Conversion.convert(@sample.english, current_user)
     @split_sample = @sample.english.split(" ")
     @split_translation = @translation.split(" ")
     @line_length = 80

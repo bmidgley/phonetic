@@ -7,11 +7,12 @@ class Conversion < ActiveRecord::Base
   @@per_page = 150
 
   def self.convert(text, user)
-    user ||= (User.find_by_username('anonymous').dictionary_user) rescue User.find(:first, :conditions => ['is_admin = ?', ActiveRecord::Base.connection.quoted_true])
+    user ||= User.find_by_username('anonymous') || User.find(:first, :conditions => ['is_admin = ?', ActiveRecord::Base.connection.quoted_true])
     text = text.dup
     words = text.downcase.split(" ").collect{|t| t.strip.gsub(/[^a-z| ]/,"")}.compact
 
-    result = self.find(:all, :conditions => {:english => words, :user_id => user})
+    level = user.level || 1
+    result = self.find(:all, :conditions => {:english => words, :user_id => user.dictionary_user, :level => [nil] + (1..level).to_a})
 
     result.each{|t| text.gsub!(/\b#{t.english.capitalize}\b/,t.phonetic.capitalize)}
     result.each{|t| text.gsub!(/\b#{t.english}\b/,t.phonetic)}

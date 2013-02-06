@@ -45,6 +45,9 @@ class ConversionsController < ApplicationController
     if params[:dictionary]
       current_user.update_attribute(:dictionary_user_id, params[:dictionary])
     end
+    if params[:level]
+      current_user.update_attribute(:level, params[:level])
+    end
     if is_editor && params[:save]
       params.each do |k,v|
         if k.to_i.to_s == k

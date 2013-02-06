@@ -65,7 +65,7 @@ class BooksController < ApplicationController
     session = Patron::Session.new
     response = session.get(@book.url, {"Range" => "bytes=#{@start}-#{@start + size}"})
     @content = response.body
-    @translation = Conversion.convert(@content, (current_user.id rescue nil))
+    @translation = Conversion.convert(@content, current_user)
     @split_content = @content.split("\n")
     @split_translation = @translation.split("\n")
     
