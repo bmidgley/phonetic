@@ -31,7 +31,7 @@
         Use dictionary:
         <%= select_tag "dictionary", options_for_select(User.editors.map{|u| [u.email,u.id]}, current_user.dictionary_user_id), :include_blank => true, :onchange => "window.location.href = '/conversions/?dictionary=' + $('#dictionary').val();" %>
         with phase:
-        <%= select_tag "level", options_for_select((1..8).map{|i| [i,i]}, current_user.level), :onchange => "window.location.href = '/conversions/?level=' + $('#level').val();" %>
+        <%= select_tag "level", options_for_select(["All phases", ""] + (1..8).map{|i| [i,i]}, current_user.level), :onchange => "window.location.href = '/conversions/?level=' + $('#level').val();" %>
       <% end %>
 
       <%- if show_title? -%>
