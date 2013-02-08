@@ -60,7 +60,7 @@ class ConversionSearch
       if level == '0'
         query_list[0] = "#{query_list[0]} and level is NULL"
       else
-        query_list[0] = "#{query_list[0]} and level = ?"
+        query_list[0] = "#{query_list[0]} and level >= ?"
         query_list << level
       end
     end

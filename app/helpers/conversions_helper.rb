@@ -4,6 +4,6 @@ module ConversionsHelper
   end
 
   def levels
-    [["Any", nil], ["None", 0]] + (1..8).map{|i| [i, i]}
+    [["Any", nil], ["None", 0]] + (1..8).map{|i| ["#{i} and above", i]}
   end
 end
