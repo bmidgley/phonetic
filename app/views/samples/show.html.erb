@@ -1,12 +1,23 @@
 <% title "Sample" %>
 
-Original text:<br>
-<%= h @sample.english %>
-<p>
-Translated text:<br>
-<%= h @translation %>
+<%= link_to_if params[:language] != 'english', 'Original', :language => 'english' %>
+<%= link_to_if params[:language] != 'translation', 'Translation', :language => 'translation' %>
+<%= link_to_if params[:language] != 'double', 'Double-line', :language => 'double' %>
 
-<p>Double-line translation:<br>
+<p></p>
+
+<% if params[:language] == 'english' %>
+<br>
+<%= h @sample.english %>
+<% end %>
+
+<% if params[:language] == 'translation' %>
+<br>
+<%= h @translation %>
+<% end %>
+
+<% if params[:language] == 'double' %>
+<br>
 
 <table border=0><tr>
 <%
@@ -27,5 +38,5 @@ end
 end 
 %>
 </tr></table>
-
+<% end %>
 <p><%= link_to "Back to List", samples_path %></p>
