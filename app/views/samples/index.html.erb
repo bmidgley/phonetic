@@ -6,14 +6,14 @@
   </tr>
   <% for sample in @samples %>
     <tr>
-		<% if is_editor %>
-      <td><%= link_to "Edit", edit_sample_path(sample) %></td>
-      <td><%= button_to "Delete", sample, {:method => :delete, :class => :destroy, :confirm => 'Are you sure you want to delete this?'} %></td>
-			<% end %>
+      <% if is_editor %>
+        <td><%= link_to "Edit", edit_sample_path(sample) %></td>
+        <td><%= button_to "Delete", sample, {:method => :delete, :class => :destroy, :confirm => 'Are you sure you want to delete this?'} %></td>
+      <% end %>
       <td><%= link_to "Translate", sample_path(sample) %></td>
     </tr>
     <tr>
-      <td colspan="4"><%=h sample.english %></td>
+      <td colspan="4"><%=h sample.english[0..30] %></td>
     </tr>
   <% end %>
 </table>
