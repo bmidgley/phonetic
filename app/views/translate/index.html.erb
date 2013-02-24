@@ -1,0 +1,18 @@
+<% if @translation %>
+<p>
+  <%= label_tag :phonetic %>
+</p>
+<p>
+  <%= @translation %>
+</p>
+<% end %>
+
+<form>
+  <p>
+    <%= label_tag :english %><br />
+    <%= text_area_tag :english, @english, :cols => 100, :rows => 40 %>
+  </p>
+  <p>
+    <%= submit_tag "Translate" %> 
+  </p>
+</form>

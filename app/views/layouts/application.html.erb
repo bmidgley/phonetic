@@ -25,7 +25,9 @@
       <%= link_to "Dictionary", conversions_path %>
       <%= link_to "Samples", samples_path %>
       <%= link_to "Books", books_path %>
-			<%= link_to("Users", users_path) if current_user && current_user.is_admin?%>
+      <%= link_to "Translate", "/translate" %>
+
+      <%= link_to("Users", users_path) if current_user && current_user.is_admin?%>
 
       <% if current_user %>
         Use dictionary:
