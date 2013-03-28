@@ -15,14 +15,17 @@
           <%= link_to "Logout", logout_path %>
         <% else %>
           <%= link_to "Register", register_path %> |
-          <%= link_to "Sign in", login_path %>
+          <%= link_to "Admin sign-in", login_path %>
         <% end %>
       </div>
       
-      <%= link_to_unless_current "Translate", translate_index_path %>
+      <%= link_to_unless_current "Conversion", translate_index_path %>
+      <%= select_tag "Phase", options_for_select((1..8).map{|i| ["Phase #{i}",i]}) %>
+      <% if current_user %>
       <%= link_to_unless_current "Dictionary", conversions_path %>
       <%= link_to_unless_current "Samples", samples_path %>
       <%= link_to_unless_current "Books", books_path %>
+      <% end %>
 
       <%- flash.each do |name, msg| -%>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
