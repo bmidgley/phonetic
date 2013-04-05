@@ -1,16 +1,20 @@
-<% if @translation %>
-<p>
-  <%= label_tag :phonetic %>
-</p>
-<p>
-  <%= @translation %>
-</p>
-<% end %>
-
 <form>
+  <% if !current_user || current_user.anonymous? %>
+    <%= select_tag "level", options_for_select(["All phases", ""] + (1..8).map{|i| [i,i]}, session[:level]) %>
+  <% end %>
+
+  <% if @translation %>
+    <p>
+      <%= label_tag :phonetic %>
+    </p>
+    <p>
+      <%= @translation %>
+    </p>
+  <% end %>
+
   <p>
     <%= label_tag :english %><br />
-    <%= text_area_tag :english, @english, :cols => 100, :rows => 40 %>
+    <%= text_area_tag :english, @english, :cols => 100, :rows => 20 %>
   </p>
   <p>
     <%= submit_tag "Translate" %> 

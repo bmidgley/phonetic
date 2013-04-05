@@ -11,6 +11,8 @@
     <%= f.label :level  %><br />
     <%= f.select :level, (1..8).to_a.map{|i| [i,i]}, :include_blank => true %>
   </p>
-  Owned by <%= @conversion.user.username rescue "no one" %>
+  <% if @conversion.persisted? %>
+    Owned by <%= @conversion.user.username rescue "no one" %>
+  <% end %>
   <p><%= f.submit %></p>
 <% end %>

@@ -53,7 +53,14 @@ class User < ActiveRecord::Base
     
     self.save
   end
-  
+
+  def to_s
+    email
+  end
+
+  def anonymous?
+    true if username == 'anonymous'
+  end
   
   def self.create_administrators(usernames = nil)
     usernames ||= ["jack","administrator"]

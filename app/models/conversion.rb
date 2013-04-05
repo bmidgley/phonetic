@@ -6,13 +6,14 @@ class Conversion < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 150
 
-  def self.convert(text, user)
+  def self.convert(text, user, level = nil)
     user ||= User.find_by_username('anonymous') || User.find(:first, :conditions => ['is_admin = ?', ActiveRecord::Base.connection.quoted_true])
     text = text.dup
     words = text.downcase.split(" ").collect{|t| t.strip.gsub(/[^a-z| ]/,"")}.compact
 
-    if user.level
-      levels = (1..(user.level)).to_a
+    level ||= user.level
+    if level
+      levels = (1..(level)).to_a
     else
       levels = [nil] + (1..8).to_a
     end
