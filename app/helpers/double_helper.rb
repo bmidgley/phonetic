@@ -1,0 +1,2 @@
+module DoubleHelper
+end

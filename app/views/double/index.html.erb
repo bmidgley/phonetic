@@ -1,0 +1,31 @@
+<%= form_tag do %>
+  <% if @translation %>
+<table border=0><tr>
+<%
+thisline = @line_length
+@split_english.each_with_index do |s, i|
+%>
+<td><%= s %><br><%= @split_translation[i] %></td>
+<% 
+
+thisline -= (s.length + 1)
+if thisline < 0
+  thisline = @line_length
+%>
+</table><table border=0><tr>
+<% 
+end
+
+end 
+%>
+</tr></table>
+  <% end %>
+
+  <p>
+    <%= label_tag :english %><br />
+    <%= text_area_tag :english, @english, :cols => 100, :rows => 20 %>
+  </p>
+  <p>
+    <%= submit_tag "Translate" %> 
+  </p>
+<% end %>
