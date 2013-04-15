@@ -5,7 +5,7 @@ class DoubleController < ApplicationController
 
   def create
     @english = params[:english]
-    @translation = Conversion.convert(@english, current_user)
+    @translation = Conversion.convert(@english, current_user, 8)
     @split_english = @english.split(" ")
     @split_translation = @translation.split(" ")
     @line_length = 80
