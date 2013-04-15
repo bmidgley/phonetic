@@ -5,7 +5,7 @@
 thisline = @line_length
 @split_english.each_with_index do |s, i|
 %>
-<td><%= s %><br><%= @split_translation[i] %></td>
+<td><%= s %><br><span class="<%= double_classes(@split_english[i], @split_translation[i]) %>"><%= @split_translation[i] %></span></td>
 <% 
 
 thisline -= (s.length + 1)

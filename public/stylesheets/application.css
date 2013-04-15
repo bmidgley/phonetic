@@ -85,3 +85,6 @@ a {
   font-size: 12px;
 }
 
+.double { color: #00f; }
+
+.changed { font-weight: bold; }
