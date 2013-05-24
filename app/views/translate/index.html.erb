@@ -3,6 +3,8 @@
     <%= select_tag "level", options_for_select(["All phases", ""] + (1..8).map{|i| [i,i]}, session[:level]) %>
   <% end %>
 
+  <%= render :partial => "shared/instruct" %>
+
   <% if @translation %>
     <p>
       <%= label_tag :phonetic %>
