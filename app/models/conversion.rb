@@ -7,6 +7,7 @@ class Conversion < ActiveRecord::Base
   @@per_page = 150
 
   def self.convert(text, user, level = nil)
+    level = 8 if level == 0
     user ||= User.find_by_username('anonymous') || User.find(:first, :conditions => ['is_admin = ?', ActiveRecord::Base.connection.quoted_true])
     text = text.dup
     words = text.downcase.split(" ").collect{|t| t.strip.gsub(/[^a-z| ]/,"")}.compact

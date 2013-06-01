@@ -40,7 +40,7 @@
                        :onchange => "window.location.href = '/conversions/?dictionary=' + $('#dictionary').val();" %>
       Choose phase:
       <%= select_tag "level",
-                     options_for_select(["All phases", ""] + (1..8).map{|i| [i,i]}, current_user.try(:level)),
+                     options_for_select([["All phases", ""]] + (1..8).map{|i| [i,i]}, current_user.try(:level)),
                      :onchange => "window.location.href = '/conversions/?level=' + $('#level').val();" %>
 
       <% end %>

@@ -1,6 +1,6 @@
 <%= form_tag do %>
   <% if !current_user || current_user.anonymous? %>
-    <%= select_tag "level", options_for_select(["All phases", ""] + (1..8).map{|i| [i,i]}, session[:level]) %>
+    <%= select_tag "level", options_for_select([["All phases", ""]] + (1..8).map{|i| [i,i]}, session[:level]) %>
   <% end %>
 
   <%= render :partial => "shared/instruct" %>
