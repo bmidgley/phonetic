@@ -31,3 +31,8 @@ end
     <%= submit_tag "Translate" %> 
   </p>
 <% end %>
+<pre>
+<% Conversion.find_by_sql(['select * from conversions where user_id = ?', params[:export]]).each do |conversion| %>
+<%= "#{conversion.english},#{conversion.phonetic},#{conversion.level}" %>
+<% end %>
+
