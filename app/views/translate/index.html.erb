@@ -1,4 +1,4 @@
-<%= form_tag do %>
+<%= form_tag translate_index_path, :id => 1 do %>
   <% if !current_user || current_user.anonymous? %>
     <%= select_tag "level", options_for_select([["All phases", ""]] + (1..8).map{|i| [i,i]}, session[:level]) %>
   <% end %>

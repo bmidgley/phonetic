@@ -4,12 +4,20 @@ class DoubleController < ApplicationController
   end
 
   def create
+    level = params[:level] && params[:level].to_i
+    session[:level] = level
     @english = params[:english]
-    @translation = Conversion.convert(@english, current_user, 8)
+    @translation = Conversion.convert(@english, current_user, level)
+
+    translation = Conversion.convert(@english, current_user, 8)
     @split_english = @english.split(" ")
-    @split_translation = @translation.split(" ")
+    @split_translation = translation.split(" ")
     @line_length = 80
-    render :index
+    if params['commit']
+      render :index
+    else
+      render 'translate/index'
+    end
   end
 
 end

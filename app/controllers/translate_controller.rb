@@ -8,7 +8,16 @@ class TranslateController < ApplicationController
     session[:level] = level
     @english = params[:english]
     @translation = Conversion.convert(@english, current_user, level)
-    render :index
+
+    translation = Conversion.convert(@english, current_user, 8)
+    @split_english = @english.split(" ")
+    @split_translation = translation.split(" ")
+    @line_length = 80
+    if params['commit']
+      render :index
+    else
+      render 'double/index'
+    end
   end
 
 end
