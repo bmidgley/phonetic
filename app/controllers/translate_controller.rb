@@ -14,8 +14,10 @@ class TranslateController < ApplicationController
     @split_translation = translation.split(" ")
     @line_length = 80
     if params['commit']
+      session[:current] = 'translate'
       render :index
     else
+      session[:current] = 'double'
       render 'double/index'
     end
   end

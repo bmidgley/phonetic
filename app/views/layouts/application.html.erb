@@ -18,8 +18,8 @@
         <% end %>
       </div>
       
-      <%= link_to_unless_current "Conversion", translate_index_path, :onclick => "document.getElementById('1').submit(); return false;" %>
-      <%= link_to_unless_current "Double-line", double_index_path, :onclick => "document.getElementById('1').submit(); return false;" %>
+      <%= link_to_if session[:current] != 'translate', "Conversion", translate_index_path, :onclick => "document.getElementById('1').submit(); return false;" %>
+      <%= link_to_if session[:current] != 'double', "Double-line", double_index_path, :onclick => "document.getElementById('1').submit(); return false;" %>
       <% if current_user %>
         <%= link_to_unless_current "Dictionary", conversions_path %>
         <%= link_to_unless_current "Samples", samples_path %>
