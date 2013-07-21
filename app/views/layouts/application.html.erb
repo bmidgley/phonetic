@@ -24,7 +24,7 @@
         <%= link_to_unless_current "Dictionary", conversions_path %>
         <%= link_to_unless_current "Samples", samples_path %>
         <%= link_to_unless_current "Books", books_path %>
-        <%= link_to("Users", users_path) if current_user.is_admin? %>
+        <%= link_to_unless_current "Users", users_path if current_user.is_admin? %>
       <% end %>
 
       <%- flash.each do |name, msg| -%>
