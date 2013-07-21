@@ -11,7 +11,7 @@ Phonetic3::Application.routes.draw do
   resources :user_settings, :only => [:new, :edit, :create, :update]
   match '/register' => 'user_settings#new', :as => :register
   match 'my-info' => 'user_settings#edit', :as => :my_info
-  root :to => 'translate#index'
+  root :to => 'translate#land'
   match '/:controller(/:action(/:id))'
 end
 

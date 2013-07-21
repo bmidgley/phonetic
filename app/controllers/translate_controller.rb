@@ -3,6 +3,10 @@ class TranslateController < ApplicationController
   def index
   end
 
+  def land
+    redirect_to :action => :create
+  end
+
   def create
     level = params[:level] && params[:level].to_i
     session[:level] = level
