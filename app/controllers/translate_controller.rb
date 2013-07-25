@@ -4,6 +4,7 @@ class TranslateController < ApplicationController
   end
 
   def land
+    session[:current] = nil
     redirect_to :action => :create
   end
 
