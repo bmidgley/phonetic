@@ -4,8 +4,9 @@
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'bootstrap' %>
     <%= yield(:head) %>
-    <%= javascript_include_tag "jquery-1.7.min", "jquery_ujs", "rails" %>
+    <%= javascript_include_tag "bootstrap", "jquery-1.7.min", "jquery_ujs", "rails" %>
   </head>
   <body onload="x = document.getElementById('conversion_english');if (x && x.value == '') x.focus();">
     <div id="container">
@@ -18,20 +19,48 @@
         <% end %>
       </div>
       
-      <% if demonstrating? %>
-        <%= link_to_if !translating?, "Conversion", translate_index_path, :onclick => "document.getElementById('1').submit(); return false;" %>
-        <%= link_to_if !doubling?, "Double-line", double_index_path, :onclick => "document.getElementById('1').submit(); return false;" %>
-      <% else %>
-        <%= link_to_unless_current "Conversion", translate_index_path %>
-        <%= link_to_unless_current "Double-line", double_index_path %>
-        <% session[:current] = nil %>
-      <% end %>
-      <% if current_user %>
-        <%= link_to_unless_current "Dictionary", conversions_path %>
-        <%= link_to_unless_current "Samples", samples_path %>
-        <%= link_to_unless_current "Books", books_path %>
-        <%= link_to_unless_current "Users", users_path if current_user.is_admin? %>
-      <% end %>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <% if demonstrating? %>
+                  <li class=<%= "active" if translating? %>>
+                    <%= link_to "Conversion", translate_index_path, :onclick => translating? ? "":"document.getElementById('1').submit(); return false;" %>
+                  </li>
+                  <li class=<%= "active" if doubling? %>>
+                    <%= link_to "Double-line", double_index_path, :onclick => doubling? ? "":"document.getElementById('1').submit(); return false;" %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to_unless_current "Conversion", translate_index_path %>
+                  </li>
+                  <li>
+                    <%= link_to_unless_current "Double-line", double_index_path %>
+                  </li>
+                  <% session[:current] = nil %>
+                <% end %>
+                <% if current_user %>
+                  <li class=<%= "active" if current_page?(conversions_path) %>>
+                    <%= link_to "Dictionary", conversions_path %>
+                  </li>
+                  <li class=<%= "active" if current_page?(samples_path) %>>
+                    <%= link_to "Samples", samples_path %>
+                  </li>
+                  <li class=<%= "active" if current_page?(books_path) %>>
+                    <%= link_to "Books", books_path %>
+                  </li>
+                  <% if current_user.is_admin? %>
+                    <li class=<%= "active" if current_page?(users_path) %>>
+                      <%= link_to "Users", users_path %>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <%- flash.each do |name, msg| -%>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>

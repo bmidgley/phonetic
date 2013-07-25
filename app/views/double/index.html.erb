@@ -25,14 +25,10 @@ end
 
   <p>
     <%= label_tag :english %><br />
-    <%= text_area_tag :english, @english, :cols => 100, :rows => 20 %>
+    <%= text_area_tag :english, @english, :cols => 100, :rows => 20, :class => 'field span9' %>
   </p>
   <p>
     <%= submit_tag "Translate" %> 
   </p>
-<% end %>
-<pre>
-<% Conversion.find_by_sql(['select * from conversions where user_id = ?', params[:export]]).each do |conversion| %>
-<%= "#{conversion.english},#{conversion.phonetic},#{conversion.level}" %>
 <% end %>
 
