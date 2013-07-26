@@ -88,3 +88,8 @@ a {
 .double { color: #00f; }
 
 .changed { font-weight: bold; }
+
+.nav li a {
+  font-size: 22px;
+}
+
