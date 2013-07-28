@@ -9,7 +9,7 @@
       <% s.split(' ').each_with_index do |sw, j| %>
         <td>
           <%= sw if @show_original %>
-          <%= "<br>" if @show_original && @show_translation %>
+          <%= raw("<br>") if @show_original && @show_translation %>
           <%= t[j] if @show_translation %>
         </td>
       <% end %>
