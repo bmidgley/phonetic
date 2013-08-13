@@ -14,12 +14,12 @@ class Conversion < ActiveRecord::Base
 
     level ||= user.level
     if level
-      levels = (1..(level)).to_a
+      levels = [nil] + (1..(level)).to_a
     else
       levels = [nil] + (1..8).to_a
     end
 
-    result = self.find(:all, :conditions => {:english => words, :user_id => user.dictionary_user, :level => levels})
+    result = self.where(:english => words, :user_id => user.dictionary_user, :level => levels)
 
     result.each{|t| text.gsub!(/\b#{t.english.capitalize}\b/,t.phonetic.capitalize)}
     result.each{|t| text.gsub!(/\b#{t.english}\b/,t.phonetic)}
